@@ -1,8 +1,15 @@
 <div class="w-screen h-svh p-20 bg-teal-900">
   <div
+    (click)="onUploadClick()"
     class="h-[66px] w-[66px] mx-auto rounded-md bg-teal-600 text-5xl cursor-pointer"
   >
     📷
-    <!-- <p class="text-[10px] mt-1 text-center">upload</p> -->
   </div>
+  <input
+    type="file"
+    #fileInput
+    (change)="onFileSelected($event)"
+    style="display: none"
+    accept="image/*"
+  />
 </div>
