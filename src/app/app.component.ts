@@ -10,6 +10,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   uploadedImage: File | null = null;
+  isEditorModalOpen = false;
 
   // Trigger the hidden file input
   onUploadClick(): void {
@@ -17,6 +18,7 @@ export class AppComponent {
       'input[type="file"]'
     ) as HTMLElement;
     fileInput.click();
+    this.isEditorModalOpen = true;
   }
 
   // Save the uploaded file in the component variable
