@@ -24,7 +24,23 @@ export class AppComponent {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.uploadedImage = input.files[0];
-      console.log('Uploaded Image:', this.uploadedImage);
+      this.convertFileToBase64(this.uploadedImage).then((base64: string) => {
+        console.log('Base64:', base64);
+      });
     }
   }
+
+  // Convert file to base64
+  convertFileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = (error) => {
+        reject(error);
+      };
+      reader.readAsDataURL(file);
+    });
+  };
 }
