@@ -1,0 +1,55 @@
+.imgEditorHeader {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background: transparent;
+  align-items: center;
+  position: absolute;
+  padding: 12px 0;
+}
+
+.imgEditorFooter {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: transparent;
+  height: 8%;
+  align-items: center;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: 10px;
+}
+
+#bog-image-editor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  height: 100%; /* Optional: Adjust the height as needed */
+}
+
+#sampleImage {
+  max-height: 70vh;
+}
+
+.round-butn {
+  background: rgba(0, 0, 0, 0.3607843137) 0% 0% no-repeat padding-box !important;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1803921569);
+  height: 45px;
+  width: 45px;
+  //   padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#Imgcanvas {
+  display: none;
+}
+
+.disableHeader {
+  opacity: 0.2 !important;
+  pointer-events: none !important;
+}
