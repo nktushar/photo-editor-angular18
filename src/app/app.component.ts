@@ -12,7 +12,7 @@ import { ImageEditorComponent } from './components/image-editor/image-editor.com
 export class AppComponent {
   uploadedImage: File | null = null;
   isEditorOpen = model(false);
-  imgSrc = signal('');
+  imgSrc = model('');
 
   // Trigger the hidden file input
   onUploadClick(): void {

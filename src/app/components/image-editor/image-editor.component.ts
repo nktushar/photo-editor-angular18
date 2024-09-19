@@ -27,7 +27,7 @@ import { AIService } from '../../services/ai-service/ai-service.service';
 export class ImageEditorComponent implements OnInit {
   imgList = model<any[]>([]);
   isEditorOpen = model<boolean>(false);
-  imgSrc = input('');
+  imgSrc = model('');
 
   public cropArea: any;
   public markerArea: any;
@@ -224,6 +224,7 @@ export class ImageEditorComponent implements OnInit {
       this.cropArea?.isOpen && (await this.cropArea?.close());
       this.selectedMenu = '';
     } else {
+      this.imgSrc.update((val) => (val = ''));
       this.isEditorOpen.update((val) => (val = false));
     }
   }
@@ -246,7 +247,7 @@ export class ImageEditorComponent implements OnInit {
       if (this.imgSrc()) {
         console.log('Sample Image:', this.sampleImage.src);
       }
-
+      this.imgSrc.update((val) => (val = ''));
       this.isEditorOpen.update((val) => (val = false));
     }
   }
