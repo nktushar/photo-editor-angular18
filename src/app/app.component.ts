@@ -13,6 +13,7 @@ export class AppComponent {
   uploadedImage: File | null = null;
   isEditorOpen = model(false);
   imgSrc = model('');
+  imgList = model<any[]>([]);
 
   // Trigger the hidden file input
   onUploadClick(): void {

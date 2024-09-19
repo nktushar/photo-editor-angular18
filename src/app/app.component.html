@@ -1,4 +1,4 @@
-<div class="w-screen h-svh p-20 bg-teal-900">
+<div class="w-screen h-svh pt-16 px-5 bg-teal-900">
   <div
     (click)="onUploadClick()"
     class="h-[66px] w-[66px] mx-auto rounded-md bg-teal-600 text-5xl cursor-pointer"
@@ -12,9 +12,16 @@
     style="display: none"
     accept="image/*"
   />
+
+  <div class="w-full mt-10 flex gap-5 justify-center flex-wrap">
+    @for(img of imgList(); track $index){
+    <img class="w-40 h-40 object-cover" src="{{ img }}" alt="" />
+    }
+  </div>
 </div>
 
 <app-image-editor
   [(imgSrc)]="imgSrc"
+  [(imgList)]="imgList"
   [(isEditorOpen)]="isEditorOpen"
 ></app-image-editor>
