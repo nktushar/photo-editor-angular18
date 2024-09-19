@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, model, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ImageEditorComponent } from './components/image-editor/image-editor.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ImageEditorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   uploadedImage: File | null = null;
-  isEditorModalOpen = false;
+  isEditorOpen = model(false);
+  imgSrc = signal('');
 
   // Trigger the hidden file input
   onUploadClick(): void {
@@ -18,7 +20,6 @@ export class AppComponent {
       'input[type="file"]'
     ) as HTMLElement;
     fileInput.click();
-    this.isEditorModalOpen = true;
   }
 
   // Save the uploaded file in the component variable
@@ -27,9 +28,12 @@ export class AppComponent {
     if (input.files && input.files.length > 0) {
       this.uploadedImage = input.files[0];
       this.convertFileToBase64(this.uploadedImage).then((base64: string) => {
-        console.log('Base64:', base64);
+        this.imgSrc.update((val) => (val = base64));
+        this.isEditorOpen.update((val) => (val = true));
       });
     }
+    input.value = '';
+    this.uploadedImage = null;
   }
 
   // Convert file to base64

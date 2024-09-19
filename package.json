@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@mediapipe/tasks-vision": "^0.10.15",
     "cropro": "^1.6.0",
     "markerjs2": "^2.32.1",
     "rxjs": "~7.8.0",

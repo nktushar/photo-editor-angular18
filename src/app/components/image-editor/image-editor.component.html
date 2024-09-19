@@ -1,1 +1,52 @@
-<p>image-editor works!</p>
+<div
+  class="fixed w-full bottom-0 shadow-lg bg-transparent transform transition-transform duration-300 z-50"
+  [class]="isEditorOpen() ? 'h-full ' : 'h-0 translate-y-full '"
+>
+  <div class="absolute text-black w-full h-full bg-[#000000b8]">
+    <!-- Your Content -->
+    <div [class]="isEditorOpen() ? '' : 'hidden'">
+      <div>
+        <div
+          class="imgEditorHeader text-white"
+          [class]="{ disableHeader: !!this.selectedMenu }"
+        >
+          <button class="round-butn" (click)="doUndo()">Undo</button>
+
+          <button class="round-butn" (click)="doRedo()">Do</button>
+
+          <button class="round-butn" (click)="doCrop()">Crop</button>
+
+          <button class="round-butn" (click)="addText()">Text</button>
+
+          <button class="round-butn" (click)="startFreeHand()">Draw</button>
+
+          <button class="round-butn" (click)="runAI()">AI</button>
+        </div>
+        <!-- ---------end of header------------ -->
+
+        <div id="bog-image-editor">
+          <img
+            [draggable]="false"
+            class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 max-h-[calc(100%-220px)] max-w-[calc(100%-120px)]"
+            id="sampleImg"
+            [src]="imgSrc()"
+            [style.visibility]="
+              markerArea?.isOpen || selectedMenu === menuItems.CROP
+                ? 'hidden'
+                : 'visible'
+            "
+          />
+
+          <div id="Imgcanvas"></div>
+        </div>
+
+        <!-- ----------footer----------- -->
+        <div class="imgEditorFooter text-white">
+          <button class="round-butn" (click)="closeEditor()">Close</button>
+
+          <button class="round-butn" (click)="exportImg()">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

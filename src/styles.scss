@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.__markerjs2_ {
+  top: 50% !important;
+  left: 50% !important;
+  translate: -50% -50% !important;
+  z-index: 1000 !important;
+}
+
+.__cropro_ {
+  top: 50% !important;
+  left: 50% !important;
+  translate: -50% -50% !important;
+  z-index: 1000 !important;
+}
