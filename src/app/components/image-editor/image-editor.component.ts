@@ -246,6 +246,8 @@ export class ImageEditorComponent implements OnInit {
     } else {
       if (this.imgSrc()) {
         console.log('Sample Image:', this.sampleImage.src);
+        this.imgList.update((val) => [...val, this.sampleImage.src]);
+        console.log('Image List:', this.imgList());
       }
       this.imgSrc.update((val) => (val = ''));
       this.isEditorOpen.update((val) => (val = false));
